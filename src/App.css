@@ -1,0 +1,36 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.App-header {
+  background-color: #222;
+  height: 60px;
+  padding: 10px;
+  color: white;
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.Form-blotTest {
+  font-size: large;
+}
+
+.Image-inkBlot {
+  min-width: 40%;
+  max-width: 60%;
+  height: auto;
+  width: auto;
+}
+
+.Input-answerBox {
+  width: 30%;
+  padding: 10px;
+  font-size: large;
+}
