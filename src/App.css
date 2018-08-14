@@ -1,21 +1,6 @@
 .App {
   text-align: center;
-}
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
-
-.App-header {
-  background-color: #222;
-  height: 60px;
-  padding: 10px;
-  color: white;
-}
-
-.App-title {
-  font-size: 1.5em;
+  margin-bottom: 200px;
 }
 
 .Form-blotTest {
@@ -33,4 +18,15 @@
   width: 30%;
   padding: 10px;
   font-size: large;
+}
+
+.CommentsBox {
+  text-align: left;
+  width: 40%;
+  margin: auto;
+}
+
+.HintPrompt {
+  font-style: italic;
+  opacity: 0.5;
 }
