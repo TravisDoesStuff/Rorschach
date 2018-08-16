@@ -6,10 +6,10 @@ class Comments extends Component {
     return (
       <div className="CommentsBox">
         <hr />
-        {data.map(data =>
+        {data.map(comment =>
           <div>
-            <h3>{ data.name }</h3>
-            <p>{ data.text }</p>
+            <h3>{ comment.name }</h3>
+            <p>{ comment.text }</p>
             <hr />
           </div>
         )}

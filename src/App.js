@@ -78,7 +78,7 @@ class App extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    let answerValue = this.state.answerValue;
+    let answerValue = this.state.answer;
     if(answerValue) {
       this.setState({ isAnswered: true });
     }
