@@ -4,6 +4,13 @@ The Rorschach test, or inkblot test, is a psychological test in which subjects v
 
 In this application, one of the original inkblots are presented to the user for them to fill out and afterwards can compare their answers to other users that have previously answered.
 
+### Starting locally
+You must have Node.js installed
+1. Clone repository
+2. Run `npm install`
+3. Run `npm start`
+4. Server should be started on `localhost:3000`
+
 ### Tasks
 - [x] Build react application
 - [x] Create MongoDB schema
