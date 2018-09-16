@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import data from './data.js';
 
 class Comments extends Component {
+  constructor() {
+    super();
+    this.state = { data: [] };
+  }
   render() {
     return (
       <div className="CommentsBox">
