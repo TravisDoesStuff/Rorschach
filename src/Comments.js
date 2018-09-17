@@ -6,6 +6,19 @@ class Comments extends Component {
     super();
     this.state = { data: [] };
   }
+
+  componentDidMount() {
+    this.fetchComments();
+  }
+
+  fetchComments = () => {
+    fetch('/api/comments/:inkId')
+      .then(data => data.json())
+      .then((res) => {
+        this.setState({ data: res.data });
+      })
+  }
+
   render() {
     return (
       <div className="CommentsBox">

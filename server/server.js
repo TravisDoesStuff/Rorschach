@@ -17,14 +17,17 @@ mongoose.connect(process.env.REACT_APP_MERN_API_ADDRESS, { useNewUrlParser: true
 const Schema = mongoose.Schema;
 const CommentSchema = new Schema({
     name: String,
-    text: String
-});
+    text: String,
+    inkId: { type: Number },
+    date: { type: Date }
+},{ collection: 'rorschach' });
 var Comment = mongoose.model('Comment', CommentSchema);
 
 expressApp.use('/api', router);
 
-router.get('/comments', (req, res) => {
-    Comment.find((err, comment) => {
+router.get('/comments/:inkId', (req, res) => {
+    const { inkId } = req.params;
+    Comment.find({inkId: inkId}, (err, comment) => {
         if(err) console.log(err);
         return res.json({ data: comment });
     });
