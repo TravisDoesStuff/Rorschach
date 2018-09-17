@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import data from './data.js';
 
 class Comments extends Component {
   constructor() {
@@ -7,24 +6,25 @@ class Comments extends Component {
     this.state = { data: [] };
   }
 
-  componentDidMount() {
+  componentWillMount() {
     this.fetchComments();
   }
 
   fetchComments = () => {
-    fetch('/api/comments/:inkId')
+    let inkId = this.props.inkId
+    fetch('/api/comments/'+inkId)
       .then(data => data.json())
       .then((res) => {
         this.setState({ data: res.data });
-      })
+      });
   }
 
   render() {
     return (
       <div className="CommentsBox">
         <hr />
-        {data.map(comment =>
-          <div>
+        {this.state.data.map(comment =>
+          <div key={comment._id}>
             <h3>{ comment.name }</h3>
             <p>{ comment.text }</p>
             <hr />

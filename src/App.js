@@ -12,8 +12,19 @@ class App extends Component {
       data : [],
       isAnswered: false,
       answer: "",
+      inkId: 1
     };
   }
+
+  componentWillMount() {
+    this.retrieveInkBlot();
+  }
+
+  retrieveInkBlot() {
+    let inkNum = Math.floor(Math.random()*10)+1;
+    this.setState({ inkId: inkNum });
+  }
+
   render() {
     return (
       <div className="App">
@@ -36,7 +47,7 @@ class App extends Component {
 
   renderBlotImage() {
     return (
-      <InkBlot />
+      <InkBlot inkId={this.state.inkId} />
     );
   }
 
@@ -53,7 +64,7 @@ class App extends Component {
   renderComments() {
     if(this.state.isAnswered) {
       return (
-        <Comments />
+        <Comments inkId={this.state.inkId} />
       );
     }
     else {
@@ -78,9 +89,19 @@ class App extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
+
     let answerValue = this.state.answer;
+    let inkId = this.state.inkId;
+
     if(answerValue) {
       this.setState({ isAnswered: true });
+      fetch('/api/comments/'+inkId, {
+        method: "POST",
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ answerValue, inkId })
+      }).then(data => data.json()).then((res) => {
+        this.setState({ data: res.data });
+      });
     }
   }
 }

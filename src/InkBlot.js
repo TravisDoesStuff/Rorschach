@@ -3,6 +3,7 @@ import blot01 from './images/blot01.jpg';
 
 class InkBlot extends Component {
   render() {
+    let fileName = this.props.inkId;
     return (
       <img src={blot01} className="Image-inkBlot" alt="inkBlot" />
     );

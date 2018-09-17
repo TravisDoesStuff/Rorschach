@@ -33,6 +33,20 @@ router.get('/comments/:inkId', (req, res) => {
     });
 });
 
+router.post('/comments/:inkId', (req, res) => {
+    const comment = new Comment();
+    const { name, text, inkId } = req.body;
+    
+    comment.name = name;
+    comment.text = text;
+    comment.inkId = inkId;
+
+    comment.save(err => {
+        if(err) console.log(err);
+        return res.json({ success: true });
+    });
+});
+
 expressApp.listen(API_PORT, () =>{
     console.log(`Listening on port ${API_PORT}`);
 });
