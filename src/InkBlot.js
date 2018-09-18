@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
-import blot01 from './images/blot01.jpg';
 
 class InkBlot extends Component {
   render() {
-    let fileName = this.props.inkId;
+    let inkId = this.props.inkId+"";
+    if(inkId.length < 2){
+      inkId = "0"+inkId;
+    }
+
+    let fileName = 'blot'+inkId+'.jpg';
     return (
-      <img src={blot01} className="Image-inkBlot" alt="inkBlot" />
+      <img src={`images/${fileName}`} className="Image-inkBlot" alt="inkBlot" />
     );
   }
 }

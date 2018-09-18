@@ -23,7 +23,6 @@ class App extends Component {
 
   retrieveInkBlot() {
     let inkNum = Math.floor(Math.random()*10)+1;
-    inkNum = 1;
     this.setState({ inkId: inkNum });
   }
 
