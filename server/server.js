@@ -35,10 +35,10 @@ router.get('/comments/:inkId', (req, res) => {
 
 router.post('/comments/:inkId', (req, res) => {
     const comment = new Comment();
-    const { name, text, inkId } = req.body;
+    const { userName, answerValue, inkId } = req.body;
     
-    comment.name = name;
-    comment.text = text;
+    comment.name = userName;
+    comment.text = answerValue;
     comment.inkId = inkId;
 
     comment.save(err => {

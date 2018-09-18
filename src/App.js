@@ -11,6 +11,7 @@ class App extends Component {
     this.state = {
       data : [],
       isAnswered: false,
+      userName: "",
       answer: "",
       inkId: 1
     };
@@ -22,6 +23,7 @@ class App extends Component {
 
   retrieveInkBlot() {
     let inkNum = Math.floor(Math.random()*10)+1;
+    inkNum = 1;
     this.setState({ inkId: inkNum });
   }
 
@@ -51,11 +53,20 @@ class App extends Component {
     );
   }
 
+  renderNameInput() {
+    return (
+      <div className="nameTextBox">
+        <input type="text" name="userName" className="Input-nameBox" value={ this.state.userName } onChange={ this.handleTextInput } placeholder="Your name (optional)" />
+      </div>
+    )
+  }
+
   renderAnswerInput() {
     return (
       <div>
         <h3>Your answer:</h3>
-        <input type="text" className="Input-answerBox" value={ this.state.answer } onChange={ this.handleTextInput } />
+        <input type="text" name="answer" className="Input-answerBox" value={ this.state.answer } onChange={ this.handleTextInput } />
+        { this.renderNameInput() }
         <p><input type="submit" value="Submit" onClick={ this.handleSubmit } /></p>
       </div>
     )
@@ -83,13 +94,17 @@ class App extends Component {
   }
 
   handleTextInput = (e) => {
-    let answerValue = e.target.value;
-    this.setState({ answer: answerValue });
+    if(e.target.name === "userName"){
+      this.setState({ userName: e.target.value });
+    } else if(e.target.name === "answer"){
+      this.setState({ answer: e.target.value });
+    }
   }
 
   handleSubmit = (e) => {
     e.preventDefault();
 
+    let userName = this.state.userName;
     let answerValue = this.state.answer;
     let inkId = this.state.inkId;
 
@@ -98,7 +113,7 @@ class App extends Component {
       fetch('/api/comments/'+inkId, {
         method: "POST",
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ answerValue, inkId })
+        body: JSON.stringify({ userName, answerValue, inkId })
       }).then(data => data.json()).then((res) => {
         this.setState({ data: res.data });
       });
