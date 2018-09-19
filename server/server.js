@@ -3,6 +3,7 @@ require('dotenv').config({path: '../.env'});
 const express = require("express");
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const moment = require('moment');
 
 const expressApp = express();
 const router = express.Router();
@@ -19,7 +20,8 @@ const CommentSchema = new Schema({
     name: String,
     text: String,
     inkId: { type: Number },
-    date: { type: Date }
+    date: { type: Date },
+    versionKey: false
 },{ collection: 'rorschach' });
 var Comment = mongoose.model('Comment', CommentSchema);
 
@@ -30,7 +32,7 @@ router.get('/comments/:inkId', (req, res) => {
     Comment.find({inkId: inkId}, (err, comment) => {
         if(err) console.log(err);
         return res.json({ data: comment });
-    });
+    }).sort({date: -1});
 });
 
 router.post('/comments/:inkId', (req, res) => {
@@ -40,6 +42,7 @@ router.post('/comments/:inkId', (req, res) => {
     comment.name = userName;
     comment.text = answerValue;
     comment.inkId = inkId;
+    comment.date = moment(new Date()).format('YYYY-MM-DD HH:mm:ss');
 
     comment.save(err => {
         if(err) console.log(err);

@@ -9,7 +9,7 @@
 
 .Image-inkBlot {
   min-width: 40%;
-  max-width: 60%;
+  max-width: 50%;
   height: auto;
   width: auto;
 }
@@ -33,4 +33,8 @@
 
 .nameTextBox {
   margin-top: 5px;
+}
+
+.commentTitle {
+  text-align: center;
 }

@@ -22,7 +22,7 @@ class Comments extends Component {
   render() {
     return (
       <div className="CommentsBox">
-        <hr />
+        <h2 className="commentTitle">Here is what other people saw!</h2>
         {this.state.data.map(comment =>
           <div key={comment._id}>
             <h3>{ comment.name }</h3>

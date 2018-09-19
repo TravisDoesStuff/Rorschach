@@ -61,14 +61,16 @@ class App extends Component {
   }
 
   renderAnswerInput() {
-    return (
-      <div>
-        <h3>Your answer:</h3>
-        <input type="text" name="answer" className="Input-answerBox" value={ this.state.answer } onChange={ this.handleTextInput } />
-        { this.renderNameInput() }
-        <p><input type="submit" value="Submit" onClick={ this.handleSubmit } /></p>
-      </div>
-    )
+    if(!this.state.isAnswered){
+      return (
+        <div>
+          <h3>Your answer:</h3>
+          <input type="text" name="answer" className="Input-answerBox" value={ this.state.answer } onChange={ this.handleTextInput } />
+          { this.renderNameInput() }
+          <p><input type="submit" value="Submit" onClick={ this.handleSubmit } /></p>
+        </div>
+      )
+    }
   }
 
   renderComments() {

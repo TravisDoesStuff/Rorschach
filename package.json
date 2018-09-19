@@ -6,6 +6,7 @@
     "body-parser": "^1.18.3",
     "dotenv": "^6.0.0",
     "express": "^4.16.3",
+    "moment": "^2.22.2",
     "mongoose": "^5.2.14",
     "nodemon": "^1.18.4",
     "react": "^16.4.1",
